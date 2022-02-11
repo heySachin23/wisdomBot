@@ -3,7 +3,7 @@ const app = require("express")();
 const axios = require('axios');
 const res = require('express/lib/response');
 require('dotenv').config()
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 const twitterClient = new TwitterApi({
     appKey : process.env.API_KEY,
