@@ -1,7 +1,6 @@
 const { TwitterApi } = require('twitter-api-v2');
 const app = require("express")();
 const axios = require('axios');
-const res = require('express/lib/response');
 require('dotenv').config()
 const PORT = process.env.PORT || 8000;
 
@@ -27,10 +26,9 @@ app.get("/", (req, res) => {
 
 app.get("/postTweet", async (req, res) => {
     const data = await getQuote()
-    console.log(data)
     const quote = data.content;
     const author = `author - ${data.author}.
                     Comment down your thoughts on this 👇`;
     await twitterClient.v1.tweetThread([quote, author]);
-    res.status(200).send({});
+    res.status(200).send({ quote, author });
 });
