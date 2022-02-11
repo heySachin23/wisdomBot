@@ -21,6 +21,10 @@ async function getQuote() {
 
 app.listen(PORT, () => console.log(`it's alive on http://localhost:${PORT}`));
 
+app.get("/", (req, res) => {
+    res.send("Hello World");
+})
+
 app.get("/postTweet", async (req, res) => {
     const data = await getQuote()
     console.log(data)
