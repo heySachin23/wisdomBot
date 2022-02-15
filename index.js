@@ -28,7 +28,7 @@ app.get("/postTweet", async (req, res) => {
     const data = await getQuote()
     const quote = data.content;
     const author = `author - ${data.author}.
-                    Comment down your thoughts on this 👇`;
+    #quote Comment down your thoughts on this 👇`;
     await twitterClient.v1.tweetThread([quote, author]);
     res.status(200).send({ quote, author });
 });
